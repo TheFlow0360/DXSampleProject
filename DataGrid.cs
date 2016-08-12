@@ -16,15 +16,13 @@ namespace DevExpressGridInconsistencyDemo
 
         public DataGrid()
         {
-            this.CreateDefaultView();
-
             this.Loaded += (sender, args) =>
             {
                 this.AutoGenerateColumns = AutoGenerateColumnsMode.None;
                 this.AutoExpandAllGroups = true;
                 this.SelectionMode = MultiSelectMode.MultipleRow;
 
-                if (DataGridRepository != null)
+                if (DataGridRepository != null && this.ItemsSource == null)
                 {
                     this.ItemsSource = new DataGridDataSource(DataGridRepository);
                     this.CreateCustomColumns();
@@ -47,6 +45,8 @@ namespace DevExpressGridInconsistencyDemo
             {
                 this.SetValue(DataGridRepositoryProperty, value);
                 this.ItemsSource = new DataGridDataSource(DataGridRepository);
+                this.CreateCustomColumns();
+                this.RefreshData();
             }
         }
 

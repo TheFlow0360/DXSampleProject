@@ -30,6 +30,8 @@ namespace DevExpressGridInconsistencyDemo
                     {
                         var columnName = reader.GetString(reader.GetOrdinal("COLUMN_NAME"));
                         var type = reader.GetString(reader.GetOrdinal("DATA_TYPE"));
+                        if (columnName == "TS")
+                            continue;
                         columns.Add(new DataInformation(ConvertFromSqlTypeToType(type), columnName));
                     }
                 });

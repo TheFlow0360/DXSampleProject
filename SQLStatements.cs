@@ -35,13 +35,14 @@ namespace DevExpressGridInconsistencyDemo
                     $"SELECT {tableIdColumn}",
                     $"FROM {tableName}",
                     String.IsNullOrWhiteSpace(where) ? String.Empty : "WHERE " + where,
-                    "ORDER BY " + (String.IsNullOrWhiteSpace(orderBy) ? tableIdColumn : orderBy),
+                    "ORDER BY " + tableIdColumn,
                     "OFFSET(@SKIP) ROWS",
                     "FETCH NEXT @TAKE ROWS ONLY",
                     ")",
                     "SELECT [table].*",
                     "FROM CTEPaging cte",
-                    $"INNER JOIN {tableName} [table] ON [table].{tableIdColumn} = cte.{tableIdColumn};",
+                    $"INNER JOIN {tableName} [table] ON [table].{tableIdColumn} = cte.{tableIdColumn}",
+                    "ORDER BY [table]." + (String.IsNullOrWhiteSpace(orderBy) ? tableIdColumn : orderBy) + ";"
                 };
             }
             else
