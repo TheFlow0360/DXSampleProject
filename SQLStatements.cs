@@ -35,14 +35,13 @@ namespace DevExpressGridInconsistencyDemo
                     $"SELECT {tableIdColumn}",
                     $"FROM {tableName}",
                     String.IsNullOrWhiteSpace(where) ? String.Empty : "WHERE " + where,
-                    "ORDER BY " + tableIdColumn,
+                    "ORDER BY " + (String.IsNullOrWhiteSpace(orderBy) ? tableIdColumn : orderBy),
                     "OFFSET(@SKIP) ROWS",
                     "FETCH NEXT @TAKE ROWS ONLY",
                     ")",
                     "SELECT [table].*",
                     "FROM CTEPaging cte",
-                    $"INNER JOIN {tableName} [table] ON [table].{tableIdColumn} = cte.{tableIdColumn}",
-                    "ORDER BY [table]." + (String.IsNullOrWhiteSpace(orderBy) ? tableIdColumn : orderBy) + ";"
+                    $"INNER JOIN {tableName} [table] ON [table].{tableIdColumn} = cte.{tableIdColumn};"
                 };
             }
             else
@@ -63,6 +62,34 @@ namespace DevExpressGridInconsistencyDemo
                 queryStatement.AddParameter("TAKE", queryParameter.Take);
                 queryStatement.AddParameter("SKIP", queryParameter.Skip);
             }           
+
+            return queryStatement;
+        }
+
+        public static QueryStatement GetSelectKeysStatement(string tableName, QueryParameter queryParameter)
+        {
+            string tableIdColumn = TableIdField(tableName);
+            string where = BuildFilterString(queryParameter);
+            string orderBy = BuildOrderBy(queryParameter);
+            string groupBy = BuildGroupBy(queryParameter);
+            string summaryItems = BuildSummaryItems(queryParameter);
+
+            if (!queryParameter.PagingActive || !String.IsNullOrWhiteSpace(groupBy))
+                throw new InvalidOperationException();
+
+            List<string> select = new List<String>
+            {
+                $"SELECT {tableIdColumn}",
+                $"FROM {tableName}",
+                String.IsNullOrWhiteSpace(where) ? String.Empty : "WHERE " + where,
+                "ORDER BY " + (String.IsNullOrWhiteSpace(orderBy) ? tableIdColumn : orderBy),
+                "OFFSET(@SKIP) ROWS",
+                "FETCH NEXT @TAKE ROWS ONLY"
+            };
+
+            var queryStatement = new QueryStatement(select);
+            queryStatement.AddParameter("TAKE", queryParameter.Take);
+            queryStatement.AddParameter("SKIP", queryParameter.Skip);
 
             return queryStatement;
         }

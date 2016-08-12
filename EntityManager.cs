@@ -55,6 +55,23 @@ namespace DevExpressGridInconsistencyDemo
             return entityList;
         }
 
+        public List<object> GetKeys(QueryParameter queryParameter)
+        {
+            QueryStatement statement = SQLStatements.GetSelectKeysStatement(_tableName, queryParameter);
+            List<object> keyList = new List<object>();
+            this.ReadFromDatabase(
+                statement,
+                reader =>
+                {
+                    while (reader.Read())
+                    {
+                        DataFieldList dataFields = ReadDataFieldList(reader);
+                        keyList.Add(dataFields[0].Value);
+                    }
+                });
+            return keyList;
+        }
+
         public int GetEntityCount(QueryParameter queryParameter)
         {
             QueryStatement statement = SQLStatements.GetRowCountStatement(_tableName, queryParameter);

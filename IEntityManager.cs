@@ -8,8 +8,11 @@
 
         List<DataFieldList> GetEntities(QueryParameter queryParameter);
 
+        List<object> GetKeys(QueryParameter queryParameter);
+
         int GetEntityCount(QueryParameter queryParameter);
 
         string IdColumn { get; }
+       
     }
 }

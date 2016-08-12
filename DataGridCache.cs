@@ -65,7 +65,7 @@ namespace DevExpressGridInconsistencyDemo
                 queryParams.Take = take;
             if (skip > 0)
                 queryParams.Skip = skip;
-            return _entityManager.GetEntities(queryParams).Select(row => EvaluateOnInstance(row, KeysCriteria[0])).ToArray();
+            return _entityManager.GetKeys(queryParams).ToArray();
         }
 
         protected override object[] FetchRows(CriteriaOperator @where, ServerModeOrderDescriptor[] order, int take)
