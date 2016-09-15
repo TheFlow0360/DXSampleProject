@@ -9,13 +9,13 @@
 
     public class DataGridDataSource : IListSource
     {
-        public IDataGridRepository DataFrontend { get; }
+        public IServerModeCore DataFrontend { get; }
 
         public event DataSourceExceptionThrownEventHandler ExceptionThrown;
 
         public event DataSourceInconsistencyDetectedEventHandler InconsistencyDetected;
 
-        public DataGridDataSource(IDataGridRepository frontend)
+        public DataGridDataSource(IServerModeCore frontend)
         {
             DataFrontend = frontend;
             DataFrontend.InconsistencyDetected += ListOnInconsistencyDetected;

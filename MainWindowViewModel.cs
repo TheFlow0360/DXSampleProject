@@ -5,7 +5,7 @@ namespace DevExpressGridInconsistencyDemo
     public class MainWindowViewModel
     {
         private IEntityManager EntityManager { get; set; }
-        public IDataGridRepository DataGridRepository { get; set; }
+        public IServerModeCore ServerModeCore { get; set; }
 
         public MainWindowViewModel()
         {
@@ -25,7 +25,7 @@ namespace DevExpressGridInconsistencyDemo
             DemoDataGenerator.DropAndFillTable(sqlConnectionStringBuilder.ConnectionString, "TEST");
 
             EntityManager = new EntityManager(sqlConnectionStringBuilder.ConnectionString, "TEST");
-            DataGridRepository = new DataGridServerModeCore(EntityManager);;
+            ServerModeCore = new DataGridServerModeCore(EntityManager);;
         }
     }
 }

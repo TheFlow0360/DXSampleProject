@@ -9,22 +9,17 @@ namespace DevExpressGridInconsistencyDemo
 
     public class DataGrid : GridControl
     {
-        static DataGrid()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(DataGrid), new FrameworkPropertyMetadata(typeof(DataGrid)));
-        }
-
         public DataGrid()
         {
             this.Loaded += (sender, args) =>
             {
                 this.AutoGenerateColumns = AutoGenerateColumnsMode.None;
                 this.AutoExpandAllGroups = true;
-                this.SelectionMode = MultiSelectMode.MultipleRow;
+                this.SelectionMode = MultiSelectMode.Row;
 
-                if (DataGridRepository != null && this.ItemsSource == null)
+                if (ServerModeCore != null && this.ItemsSource == null)
                 {
-                    this.ItemsSource = new DataGridDataSource(DataGridRepository);
+                    this.ItemsSource = new DataGridDataSource(ServerModeCore);
                     this.CreateCustomColumns();
                     this.RefreshData();
                     this.Focus(); 
@@ -32,19 +27,19 @@ namespace DevExpressGridInconsistencyDemo
             };
         }
 
-        public static readonly DependencyProperty DataGridRepositoryProperty = DependencyProperty.Register(
-            "DataGridRepository",
-            typeof(IDataGridRepository),
+        public static readonly DependencyProperty ServerModeCoreProperty = DependencyProperty.Register(
+            "ServerModeCore",
+            typeof(IServerModeCore),
             typeof(DataGrid),
             new PropertyMetadata(null));
 
-        public IDataGridRepository DataGridRepository
+        public IServerModeCore ServerModeCore
         {
-            get { return (IDataGridRepository)this.GetValue(DataGridRepositoryProperty); }
+            get { return (IServerModeCore)this.GetValue(ServerModeCoreProperty); }
             set
             {
-                this.SetValue(DataGridRepositoryProperty, value);
-                this.ItemsSource = new DataGridDataSource(DataGridRepository);
+                this.SetValue(ServerModeCoreProperty, value);
+                this.ItemsSource = new DataGridDataSource(ServerModeCore);
                 this.CreateCustomColumns();
                 this.RefreshData();
             }
@@ -57,7 +52,7 @@ namespace DevExpressGridInconsistencyDemo
 
         private void CreateCustomColumns()
         {
-            var columnInformations = this.DataGridRepository.ColumnInformation;
+            var columnInformations = this.ServerModeCore.ColumnsInformation;
 
             foreach (var columnInformation in columnInformations)
             {

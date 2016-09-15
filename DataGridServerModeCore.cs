@@ -10,7 +10,7 @@ namespace DevExpressGridInconsistencyDemo
     using DevExpress.Data.Filtering;
     using DevExpress.Data.Helpers;
 
-    public class DataGridServerModeCore : ServerModeCore, IDataGridRepository
+    public class DataGridServerModeCore : ServerModeCore, IServerModeCore
     {
         private readonly IEntityManager _entityManager;
 
@@ -26,17 +26,30 @@ namespace DevExpressGridInconsistencyDemo
             _entityManager = entityManager;
         }
 
-        private List<DataInformation> _columnInformation;
-        public List<DataInformation> ColumnInformation
+        private List<DataInformation> _columnsInformation;
+        public List<DataInformation> ColumnsInformation
         {
             get
             {
-                if (_columnInformation == null)
+                if (_columnsInformation == null)
                 {
-                    _columnInformation = _entityManager.GetColumnInformation();
+                    _columnsInformation = _entityManager.GetColumnInformation();
                 }
-                return _columnInformation;
+                return _columnsInformation;
             }
+        }
+
+        private PropertyDescriptorCollection _pdc;
+        private PropertyDescriptorCollection Pdc => _pdc ?? (_pdc = CreatePropertyDescripterCollection());
+
+        private PropertyDescriptorCollection CreatePropertyDescripterCollection()
+        {
+            List<PropertyDescriptor> descriptors = new List<PropertyDescriptor>();
+            foreach (var column in ColumnsInformation)
+            {
+                descriptors.Add(new DataGridColumnPropertyDescriptor(column));
+            }
+            return new PropertyDescriptorCollection(descriptors.ToArray());
         }
 
         protected override ServerModeCore DXCloneCreate()
@@ -148,5 +161,58 @@ namespace DevExpressGridInconsistencyDemo
             ListChanged?.Invoke(this, e);
         }
         #endregion
+
+        #region ITypedList Members
+        public string GetListName(PropertyDescriptor[] listAccessors)
+        {
+            return typeof(DataFieldList).Name;
+        }
+
+        public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
+        {
+            return Pdc;
+        }
+        #endregion
+    }
+
+    public class DataGridColumnPropertyDescriptor : PropertyDescriptor
+    {
+        private readonly DataInformation _column;
+
+        public DataGridColumnPropertyDescriptor(DataInformation column) : base(column.Name, null)
+        {
+            _column = column;
+        }
+
+        public override bool CanResetValue(object component)
+        {
+            return false;
+        }
+
+        public override Object GetValue(object component)
+        {
+            return ((DataFieldList)component)?[_column.Name];
+        }
+
+        public override void ResetValue(object component)
+        {
+            throw new NotSupportedException();
+        }
+
+        public override void SetValue(object component, object value)
+        {
+            throw new NotSupportedException();
+        }
+
+        public override bool ShouldSerializeValue(object component)
+        {
+            return false;
+        }
+
+        public override Type ComponentType => typeof(DataFieldList);
+
+        public override bool IsReadOnly => true;
+
+        public override Type PropertyType => _column.Type;
     }
 }

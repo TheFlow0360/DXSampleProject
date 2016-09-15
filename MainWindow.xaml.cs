@@ -11,7 +11,6 @@ namespace DevExpressGridInconsistencyDemo
         {
             InitializeComponent();
             DataContext = new MainWindowViewModel();
-            DataGrid.DataGridRepository = ((MainWindowViewModel) DataContext).DataGridRepository;
         }
     }
 }

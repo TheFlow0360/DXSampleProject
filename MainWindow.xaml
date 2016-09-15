@@ -4,9 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DevExpressGridInconsistencyDemo"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <local:DataGrid x:Name="DataGrid" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0">
+            <TextBox Text="{Binding ElementName=DataGrid, Path=FilterCriteria}" 
+                     DockPanel.Dock="Bottom" />
+            <local:DataGrid x:Name="DataGrid"
+                            ServerModeCore="{Binding ServerModeCore}" />
+        </DockPanel>
     </Grid>
 </Window>

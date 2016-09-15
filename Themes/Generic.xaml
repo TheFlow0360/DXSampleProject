@@ -2,6 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
                     xmlns:local="clr-namespace:DevExpressGridInconsistencyDemo">
-    <Style BasedOn="{StaticResource {x:Type dxg:GridControl}}" TargetType="{x:Type local:DataGrid}" />
-    <Style BasedOn="{StaticResource {x:Type dxg:TableView}}" TargetType="{x:Type local:TableView}" />
+    <Style TargetType="{x:Type local:DataGrid}" />
+    <Style TargetType="{x:Type local:TableView}" />
 </ResourceDictionary>

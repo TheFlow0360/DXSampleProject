@@ -35,56 +35,83 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.CodeParser.v16.1">
+    <Reference Include="DevExpress.CodeParser.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.CodeParser.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Data.v16.1">
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Data.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Images.v16.1">
+    <Reference Include="DevExpress.Images.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Images.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Map.v16.1.Core">
+    <Reference Include="DevExpress.Map.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Map.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Mvvm.v16.1">
+    <Reference Include="DevExpress.Mvvm.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Mvvm.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Pdf.v16.1.Core">
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Pdf.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Printing.v16.1.Core">
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Printing.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Core.v16.1">
+    <Reference Include="DevExpress.Xpf.Core.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.Core.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Docking.v16.1">
+    <Reference Include="DevExpress.Xpf.Docking.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.Docking.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Grid.v16.1">
+    <Reference Include="DevExpress.Xpf.Grid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.Grid.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Grid.v16.1.Core">
+    <Reference Include="DevExpress.Xpf.Grid.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.Grid.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Grid.v16.1.Extensions">
+    <Reference Include="DevExpress.Xpf.Grid.v16.1.Extensions, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.Grid.v16.1.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Layout.v16.1.Core">
+    <Reference Include="DevExpress.Xpf.Layout.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.Layout.v16.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.LayoutControl.v16.1">
+    <Reference Include="DevExpress.Xpf.LayoutControl.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.LayoutControl.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Map.v16.1">
+    <Reference Include="DevExpress.Xpf.Map.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.Map.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Ribbon.v16.1">
+    <Reference Include="DevExpress.Xpf.Ribbon.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.Ribbon.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v16.1">
+    <Reference Include="DevExpress.Xpf.Themes.Office2016Colorful.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\DevExpress.Xpf.Themes.Office2016Colorful.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DevExpress.Xpf.Themes.Office2016White.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.SLResourceKeys">
+      <HintPath>lib\DevExpress.Xpf.Themes.SLResourceKeys.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.Standard.v16.1">
+      <HintPath>lib\DevExpress.Xpf.Themes.Standard.v16.1.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -113,6 +140,7 @@
     <Compile Include="DemoDataGenerator.cs" />
     <Compile Include="QueryParameter.cs" />
     <Compile Include="QueryStatement.cs" />
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="SQLStatements.cs" />
     <Compile Include="TableView.cs" />
     <Page Include="MainWindow.xaml">
@@ -123,12 +151,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataGridCache.cs" />
+    <Compile Include="DataGridServerModeCache.cs" />
     <Compile Include="DataGridDataSource.cs" />
-    <Compile Include="DataGridRepository.cs" />
+    <Compile Include="DataGridServerModeCore.cs" />
     <Compile Include="DataSourceEventArgs.cs" />
     <Compile Include="EntityManager.cs" />
-    <Compile Include="IDataGridRepository.cs" />
+    <Compile Include="IServerModeCore.cs" />
     <Compile Include="IEntityManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

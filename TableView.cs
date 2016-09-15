@@ -9,7 +9,7 @@ namespace DevExpressGridInconsistencyDemo
     {
         static TableView()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(TableView), new FrameworkPropertyMetadata(typeof(TableView)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TableView), new FrameworkPropertyMetadata(typeof(DevExpress.Xpf.Grid.TableView)));
         }
 
         public TableView()
@@ -20,7 +20,7 @@ namespace DevExpressGridInconsistencyDemo
             ShowTotalSummary = true;
             ShowAutoFilterRow = true;
             AutoWidth = false;
-            ShowCheckBoxSelectorColumn = true;
+            ShowCheckBoxSelectorColumn = false;
             AllowEditing = false;
             ExtendScrollBarToFixedColumns = true;
             AllowFixedColumnMenu = true;
@@ -28,6 +28,8 @@ namespace DevExpressGridInconsistencyDemo
             AllowFilterEditor = true;
             AllowColumnFiltering = true;
             AllowSorting = true;
+
+            NavigationStyle = GridViewNavigationStyle.Row;
             
             AllowHorizontalScrollingVirtualization = true;
         }

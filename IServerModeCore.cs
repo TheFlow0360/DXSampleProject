@@ -6,8 +6,8 @@
     using DevExpress.Data;
     using DevExpress.Data.Helpers;
 
-    public interface IDataGridRepository: IBindingList, IList, ICollection, IEnumerable, IListServer, IListServerHints
+    public interface IServerModeCore: IBindingList, IList, ITypedList, ICollection, IEnumerable, IListServer, IListServerHints
     {
-        List<DataInformation> ColumnInformation { get; }
+        List<DataInformation> ColumnsInformation { get; }
     }
 }
