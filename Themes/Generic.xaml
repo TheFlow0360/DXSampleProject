@@ -1,7 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
-                    xmlns:local="clr-namespace:DevExpressGridInconsistencyDemo">
+                    xmlns:local="clr-namespace:DevExpressGridInconsistencyDemo"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm">
     <Style TargetType="{x:Type local:DataGrid}" />
     <Style TargetType="{x:Type local:TableView}" />
 </ResourceDictionary>

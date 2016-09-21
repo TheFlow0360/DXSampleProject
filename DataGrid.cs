@@ -4,7 +4,6 @@ namespace DevExpressGridInconsistencyDemo
 {
     using System;
     using System.Windows;
-    using System.Windows.Data;
     using DevExpress.Xpf.Grid;
 
     public class DataGrid : GridControl
@@ -59,10 +58,11 @@ namespace DevExpressGridInconsistencyDemo
                 var column = new GridColumn()
                 {
                     Header = columnInformation.Name,
+                    FieldName = columnInformation.Name,
                     Width = new GridColumnWidth(200),
-                    Binding = new Binding("[" + columnInformation.Name + "]"),
-                    UnboundExpression = "[" + columnInformation.Name + "]",
-                    UnboundType = this.GetDevExpColumnType(columnInformation.Type),
+                    //Binding = new Binding("[" + columnInformation.Name + "]"),
+                    //UnboundExpression = "[" + columnInformation.Name + "]",
+                    //UnboundType = this.GetDevExpColumnType(columnInformation.Type),
                 };
                 this.Columns.Add(column);
             }

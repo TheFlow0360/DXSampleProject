@@ -133,9 +133,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BooleanToBrushConverter.cs" />
     <Compile Include="DataField.cs" />
     <Compile Include="DataFieldList.cs" />
     <Compile Include="DataGrid.cs" />
+    <Compile Include="DataGridCellTemplateSelector.cs" />
     <Compile Include="DataInformation.cs" />
     <Compile Include="DemoDataGenerator.cs" />
     <Compile Include="QueryParameter.cs" />

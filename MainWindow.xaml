@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DevExpressGridInconsistencyDemo"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:BooleanToBrushConverter x:Key="BooleanToBrushConverter" />
+        <local:DataGridCellTemplateSelector x:Key="DataGridCellTemplateSelector">
+            <local:DataGridCellTemplateSelector.Templates>
+                <local:TemplateList>
+                    <local:DataGridCellTemplate DataType="{x:Type system:Boolean}"
+                                                ColumnFieldName="FlipACoinColumn">
+                        <Ellipse Width="12"
+                                 Height="12"
+                                 Fill="{Binding Converter={StaticResource BooleanToBrushConverter}, Mode=OneWay}" />
+                    </local:DataGridCellTemplate>
+                </local:TemplateList>
+            </local:DataGridCellTemplateSelector.Templates>
+        </local:DataGridCellTemplateSelector>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -15,7 +32,26 @@
             <TextBox Text="{Binding ElementName=DataGrid, Path=FilterCriteria}" 
                      DockPanel.Dock="Bottom" />
             <local:DataGrid x:Name="DataGrid"
-                            ServerModeCore="{Binding ServerModeCore}" />
+                            ServerModeCore="{Binding ServerModeCore}">
+                <local:DataGrid.View>
+                    <local:TableView CellTemplateSelector="{StaticResource DataGridCellTemplateSelector}" />
+                </local:DataGrid.View>
+            </local:DataGrid>
         </DockPanel>
     </Grid>
 </Window>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
