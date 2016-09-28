@@ -48,7 +48,8 @@ namespace DevExpressGridInconsistencyDemo
                 }
                 else
                 {
-                   return false;
+                   System.Console.WriteLine("Tried to convert invalid type: Expected was AdressStatus(Wrapper)/int/string, but was {0}.", value.GetType());
+                   return false;    
                 }
                 property = (SampleEnum)numericValue;
             }
