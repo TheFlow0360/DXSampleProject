@@ -20,7 +20,15 @@ namespace DevExpressGridInconsistencyDemo
                 new Tuple<string, ColumnType, bool>("NameColumn", ColumnType.String, false),
                 new Tuple<string, ColumnType, bool>("NullableCompanyColumn", ColumnType.String, true),
                 new Tuple<string, ColumnType, bool>("FlipACoinColumn", ColumnType.Bool, false),
-                new Tuple<string, ColumnType, bool>("NullableRandomNumberColumn", ColumnType.Int, true)
+                new Tuple<string, ColumnType, bool>("NullableRandomNumberColumn", ColumnType.Int, true),
+                new Tuple<string, ColumnType, bool>("PlaceholderColumn1", ColumnType.Int, false),
+                new Tuple<string, ColumnType, bool>("PlaceholderColumn2", ColumnType.Int, false),
+                new Tuple<string, ColumnType, bool>("PlaceholderColumn3", ColumnType.Int, false),
+                new Tuple<string, ColumnType, bool>("PlaceholderColumn4", ColumnType.Int, false),
+                new Tuple<string, ColumnType, bool>("PlaceholderColumn5", ColumnType.Int, false),
+                new Tuple<string, ColumnType, bool>("PlaceholderColumn6", ColumnType.Int, false),
+                new Tuple<string, ColumnType, bool>("PlaceholderColumn7", ColumnType.Int, false),
+                new Tuple<string, ColumnType, bool>("SampleEnumColumn", ColumnType.SampleEnum, true)
             };
 
         private const string Null = "NULL";
@@ -176,6 +184,11 @@ namespace DevExpressGridInconsistencyDemo
                     return $"'{(column.Item3 ? RandomCompanies[rnd.Next(RandomCompanies.Count)] : RandomNames[rnd.Next(RandomNames.Count)])}'";
                 case ColumnType.Bool:
                     return (rnd.Next()%2).ToString();
+                case ColumnType.SampleEnum:
+                    if (column.Item3)
+                        if (rnd.Next(10) == 0)
+                            return Null;
+                    return rnd.Next(6).ToString();
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -199,7 +212,8 @@ namespace DevExpressGridInconsistencyDemo
     {
         Int,
         String,
-        Bool
+        Bool,
+        SampleEnum
     }
 
     static class UtilsExtensions
@@ -214,6 +228,8 @@ namespace DevExpressGridInconsistencyDemo
                     return $"[nvarchar]({DemoDataGenerator.StringMaxLength})";
                 case ColumnType.Bool:
                     return "[bit]";
+                case ColumnType.SampleEnum:
+                    return "[smallint]";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(ct), ct, null);
             }

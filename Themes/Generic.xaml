@@ -1,9 +1,96 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
-                    xmlns:local="clr-namespace:DevExpressGridInconsistencyDemo"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib"
-                    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm">
+                    xmlns:local="clr-namespace:DevExpressGridInconsistencyDemo">
+    <local:SampleEnumToCaptionConverter x:Key="SampleEnumToCaptionConverter" />
+    <local:SampleEnumToBrushConverter x:Key="SampleEnumToBrushConverter" />
+    <local:SampleEnumWrapperConverter x:Key="SampleEnumWrapperConverter" />
+    <Style TargetType="{x:Type local:SampleEnumFilterControl}">
+        <Setter Property="SelectedItem" Value="{Binding SelectedEnum, RelativeSource={RelativeSource Self}, Mode=TwoWay, Converter={StaticResource SampleEnumWrapperConverter}}" />
+        <Setter Property="ApplyItemTemplateToSelectedItem" Value="True" />
+        <Setter Property="IsTextEditable" Value="False" />
+        <Setter Property="Padding" Value="5,0,0,0" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <DockPanel>
+                        <Ellipse Width="12"
+                                 Height="12"
+                                 DockPanel.Dock="Left"
+                                 Fill="{Binding Converter={StaticResource SampleEnumToBrushConverter},
+                                                Mode=OneWay}" />
+                        <TextBlock Margin="5,0,0,0"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Converter={StaticResource SampleEnumToCaptionConverter},
+                                                  Mode=OneWay}" />
+                    </DockPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type local:SampleEnumFilterEditSettings}">
+        <Setter Property="ApplyItemTemplateToSelectedItem" Value="True" />
+        <Setter Property="IsTextEditable" Value="False" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <DockPanel>
+                        <Ellipse Width="12"
+                                 Height="12"
+                                 DockPanel.Dock="Left"
+                                 Fill="{Binding Converter={StaticResource SampleEnumToBrushConverter},
+                                                Mode=OneWay}" />
+                        <TextBlock Margin="5,0,0,0"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Converter={StaticResource SampleEnumToCaptionConverter},
+                                                  Mode=OneWay}" />
+                    </DockPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <local:SampleEnumColumnTemplateHelper x:Key="SampleEnumColumnTemplateHelper"
+                                          ImmediateUpdateAutoFilter="True"
+                                          ColumnFieldName="SampleEnumColumn">
+        <local:DataGridColumnTemplateHelper.CellTemplate>
+            <DataTemplate DataType="{x:Type dxg:GridCellData}">
+                <Ellipse Width="12"
+                         Height="12"
+                         Fill="{Binding Value,
+                                        Converter={StaticResource SampleEnumToBrushConverter},
+                                        Mode=OneWay}"
+                         ToolTip="{Binding Value,
+                                           Converter={StaticResource SampleEnumToCaptionConverter},
+                                           Mode=OneWay}" />
+            </DataTemplate>
+        </local:DataGridColumnTemplateHelper.CellTemplate>
+        <local:DataGridColumnTemplateHelper.GroupValueTemplate>
+            <DataTemplate DataType="{x:Type dxg:GridColumnData}">
+                <DockPanel>
+                    <Ellipse Width="12"
+                             Height="12"
+                             DockPanel.Dock="Left"
+                             Fill="{Binding Value,
+                                            Converter={StaticResource SampleEnumToBrushConverter},
+                                            Mode=OneWay}" />
+                    <TextBlock Margin="5,0,0,0"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Center"
+                               Text="{Binding Value,
+                                              Converter={StaticResource SampleEnumToCaptionConverter},
+                                              Mode=OneWay}" />
+                </DockPanel>
+            </DataTemplate>
+        </local:DataGridColumnTemplateHelper.GroupValueTemplate>
+        <local:DataGridColumnTemplateHelper.EditSettings>
+            <local:SampleEnumFilterEditSettings ApplyItemTemplateToSelectedItem="True"
+                                                IsTextEditable="False"
+                                                DisplayMember="Enum"
+                                                ValueMember="Enum" />
+        </local:DataGridColumnTemplateHelper.EditSettings>
+    </local:SampleEnumColumnTemplateHelper>
     <Style TargetType="{x:Type local:DataGrid}" />
     <Style TargetType="{x:Type local:TableView}" />
 </ResourceDictionary>

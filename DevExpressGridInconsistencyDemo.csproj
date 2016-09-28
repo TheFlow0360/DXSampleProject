@@ -138,11 +138,16 @@
     <Compile Include="DataFieldList.cs" />
     <Compile Include="DataGrid.cs" />
     <Compile Include="DataGridCellTemplateSelector.cs" />
+    <Compile Include="DataGridColumnTemplateHelper.cs" />
     <Compile Include="DataInformation.cs" />
     <Compile Include="DemoDataGenerator.cs" />
     <Compile Include="QueryParameter.cs" />
     <Compile Include="QueryStatement.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="SampleEnum.cs" />
+    <Compile Include="SampleEnumColumnTemplateHelper.cs" />
+    <Compile Include="SampleEnumConverters.cs" />
+    <Compile Include="SampleEnumFilterControl.cs" />
     <Compile Include="SQLStatements.cs" />
     <Compile Include="TableView.cs" />
     <Page Include="MainWindow.xaml">
