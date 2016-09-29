@@ -16,7 +16,9 @@ namespace DevExpressGridInconsistencyDemo
 
     public class SampleEnumWrapper
     {
-        public SampleEnum? Enum;
+        public SampleEnum? Enum { get; set; }
+
+        public Int16? EnumValue => (Int16?) Enum;
     }
 
     public class SampleEnumWrapperConverter : IValueConverter

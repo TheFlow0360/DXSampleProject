@@ -88,7 +88,7 @@
             <local:SampleEnumFilterEditSettings ApplyItemTemplateToSelectedItem="True"
                                                 IsTextEditable="False"
                                                 DisplayMember="Enum"
-                                                ValueMember="Enum" />
+                                                ValueMember="EnumValue" />
         </local:DataGridColumnTemplateHelper.EditSettings>
     </local:SampleEnumColumnTemplateHelper>
     <Style TargetType="{x:Type local:DataGrid}" />
